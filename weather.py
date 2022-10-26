@@ -10,6 +10,7 @@ from datetime import *
 import requests
 import pytz
 from PIL import Image, ImageTk
+from creds import API_KEY
 
 root = Tk()
 root.title("Weather App")
@@ -35,7 +36,7 @@ def getWeather():
     clock.config(text=current_time)
 
     ## WEATHER
-    api="https://api.openweathermap.org/data/2.5/onecall?lat="+str(location.latitude)+"&lon="+str(location.longitude)+"&units=metric&exclude=hourly&appid=50756567cbaa8272353ba18ba1028fb5"
+    api="https://api.openweathermap.org/data/2.5/onecall?lat="+str(location.latitude)+"&lon="+str(location.longitude)+f"&units=metric&exclude=hourly&appid={API_KEY}"
     json_data = requests.get(api).json()
 
     ## CURRENT
